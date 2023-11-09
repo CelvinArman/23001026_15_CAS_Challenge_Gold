@@ -1,0 +1,2136 @@
+{
+	"info": {
+		"_postman_id": "f16865fe-ec51-4466-85a8-c1ff55f8bfc6",
+		"name": "Seconhand API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28077275",
+		"_collection_link": "https://www.postman.com/celvinarman/workspace/challangebinarqae15-celvinarmansaibi/collection/28077275-f16865fe-ec51-4466-85a8-c1ff55f8bfc6?action=share&source=collection_link&creator=28077275"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"secondhand_email\", jsonData.email)\r",
+									"pm.environment.set(\"secondhand_userid\", jsonData.id)\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate a random name\r",
+									"function generateRandomName() {\r",
+									"    const firstNames = [\"John\", \"Alice\", \"Bob\", \"Emma\", \"David\",\"Jhony\"]; // Add more first names as needed\r",
+									"    const lastNames = [\"Smith\", \"Johnson\", \"Doe\", \"Brown\", \"Wilson\"]; // Add more last names as needed\r",
+									"    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];\r",
+									"    const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];\r",
+									"    return `${randomFirstName} ${randomLastName}`;\r",
+									"}\r",
+									"const randomName = generateRandomName();\r",
+									"// Store the random name in an environment variable\r",
+									"pm.environment.set('random_name', randomName);\r",
+									"\r",
+									"\r",
+									"// Generate a random email address\r",
+									"function generateRandomEmail() {\r",
+									"    const username = Math.random().toString(36).substring(2, 12); // Generate a random username\r",
+									"    const domain = 'example.com'; // Replace 'example.com' with your desired domain\r",
+									"    return `${username}@${domain}`;\r",
+									"}\r",
+									"const randomEmail = generateRandomEmail();\r",
+									"// Store the random email in an environment variable\r",
+									"pm.environment.set('random_email', randomEmail);\r",
+									"\r",
+									"// Generate a random-looking Indonesian phone number\r",
+									"function generateRandomIndonesianPhoneNumber() {\r",
+									"    const prefixOptions = [\"0811\", \"0812\", \"0813\", \"0821\", \"0822\", \"0823\", \"0851\", \"0852\", \"0853\", \"0814\", \"0815\", \"0816\", \"0855\"];\r",
+									"    const selectedPrefix = prefixOptions[Math.floor(Math.random() * prefixOptions.length)];\r",
+									"    const remainingDigits = Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');\r",
+									"    return selectedPrefix + remainingDigits;\r",
+									"}\r",
+									"const randomIndonesianPhoneNumber = generateRandomIndonesianPhoneNumber();\r",
+									"// Store the random Indonesian phone number in an environment variable\r",
+									"pm.environment.set('random_indonesian_phone_number', randomIndonesianPhoneNumber);\r",
+									"\r",
+									"// Generate a random-looking Indonesian address\r",
+									"function generateRandomIndonesianAddress() {\r",
+									"    const streets = [\"Jalan Merdeka\", \"Jalan Pahlawan\", \"Jalan Raya\", \"Jalan Cendrawasih\", \"Jalan Budi Utomo\", \"Jalan Diponegoro\"];\r",
+									"    const cities = [\"Jakarta\", \"Surabaya\", \"Bandung\", \"Yogyakarta\", \"Medan\", \"Semarang\"];\r",
+									"    const provinces = [\"Jakarta\", \"East Java\", \"West Java\", \"Yogyakarta\", \"North Sumatra\", \"Central Java\"];\r",
+									"    \r",
+									"    const randomStreet = streets[Math.floor(Math.random() * streets.length)];\r",
+									"    const randomCity = cities[Math.floor(Math.random() * cities.length)];\r",
+									"    const randomProvince = provinces[Math.floor(Math.random() * provinces.length)];\r",
+									"    \r",
+									"    return `${randomStreet}, ${randomCity}, ${randomProvince}`;\r",
+									"}\r",
+									"const randomIndonesianAddress = generateRandomIndonesianAddress();\r",
+									"// Store the random Indonesian address in an environment variable\r",
+									"pm.environment.set('random_indonesian_address', randomIndonesianAddress);\r",
+									"// Extract the city from the generated address\r",
+									"const city = randomIndonesianAddress.split(', ')[1];\r",
+									"// Store the extracted city in an environment variable\r",
+									"pm.environment.set('random_indonesian_city', city);\r",
+									"\r",
+									"// Define an array of random IT computer product names\r",
+									"const computerProductNames = [\r",
+									"    \"Laptop\", \"Desktop Computer\", \"Monitor\", \"Keyboard\", \"Mouse\", \"Router\", \"External Hard Drive\",\r",
+									"    \"Webcam\", \"Printer\", \"Scanner\", \"Graphics Card\", \"Motherboard\", \"CPU\", \"RAM\", \"SSD\",\r",
+									"    \"Software License\", \"Tablet\", \"Server\", \"UPS\", \"Network Switch\"\r",
+									"];\r",
+									"// Generate a random IT computer product name\r",
+									"function generateRandomComputerProductName() {\r",
+									"    const randomIndex = Math.floor(Math.random() * computerProductNames.length);\r",
+									"    return computerProductNames[randomIndex];\r",
+									"}\r",
+									"const randomComputerProductName = generateRandomComputerProductName();\r",
+									"// Store the random computer product name in an environment variable\r",
+									"pm.environment.set('random_computer_product_name', randomComputerProductName);\r",
+									"\r",
+									"// Define an array of random product descriptions\r",
+									"const productDescriptions = [\r",
+									"    \"High-performance and reliable\",\r",
+									"    \"Sleek and modern design\",\r",
+									"    \"Built to last with top-quality materials\",\r",
+									"    \"Versatile and easy to use\",\r",
+									"    \"Cutting-edge technology for superior performance\",\r",
+									"    \"Ergonomically designed for comfort\",\r",
+									"    \"Enhance your productivity with this product\",\r",
+									"    \"Experience the future of technology\",\r",
+									"    \"Affordable and feature-packed\",\r",
+									"    \"Innovative and stylish\",\r",
+									"    \"Ideal for both personal and professional use\",\r",
+									"    \"Eco-friendly and energy-efficient\",\r",
+									"    \"Seamless connectivity and compatibility\",\r",
+									"    \"Get the job done with ease\",\r",
+									"    \"Upgrade your setup with this exceptional product\",\r",
+									"    \"Stay ahead with the latest in tech\",\r",
+									"];\r",
+									"\r",
+									"// Generate a random product description\r",
+									"function generateRandomProductDescription() {\r",
+									"    const randomIndex = Math.floor(Math.random() * productDescriptions.length);\r",
+									"    return productDescriptions[randomIndex];\r",
+									"}\r",
+									"const randomProductDescription = generateRandomProductDescription();\r",
+									"// Store the random product description in an environment variable\r",
+									"pm.environment.set('random_product_description', randomProductDescription);\r",
+									"\r",
+									"// Generate a random product price\r",
+									"function generateRandomProductPrice(min, max, decimalPlaces) {\r",
+									"    const price = (Math.random() * (max - min) + min).toFixed(decimalPlaces);\r",
+									"    return parseFloat(price).toFixed(decimalPlaces);\r",
+									"}\r",
+									"const minPrice = 100000.00; // Define the minimum price\r",
+									"const maxPrice = 5000000.00; // Define the maximum price\r",
+									"const decimalPlaces = 0; // Define the number of decimal places\r",
+									"const randomProductPrice = generateRandomProductPrice(minPrice, maxPrice, decimalPlaces);\r",
+									"// Store the random product price in an environment variable\r",
+									"pm.environment.set('random_product_price', randomProductPrice);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"name\": \"{{random_name}}\",\r\n    \"email\": \"{{random_email}}\",\r\n    \"password\": \"{{paswprd}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Registration",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"name\": \"{{random_name}}\",\r\n    \"email\": \"{{random_email}}\",\r\n    \"password\": \"{{paswprd}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:04:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4NzYxMSIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTY5OTQ3NzQ4MSwiZXhwIjoxNzAwNjg3MDgxLCJqdGkiOiIyOWE3Mjc0Ny00NGRiLTQ4MmYtYTk2Mi01MDA4ZWQ0ZTJmYzIifQ.vqZb5Hsp04mD4xkW0InhxtVAZLHkZozilGwOKT_P5Lg"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb649134192ad22a8ecd418502e60837\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=UtjWVqh%2Bqg3JPvY%2BXxxo%2FwOD0TVlOlxYMM8MjHuF46CXpxsxRqGZLFKX%2F16xzg5D5%2BA4TJWcwq1%2ByIS9JF0bKjYAu3iMTaoNWBZdAn38z3o0XzZ9%2F947S6reMg2zGTWUJDoCJ4jWCFkBKmTt5fBktUtsRx%2FN6%2Bz9RT7FfYq%2BTYxWwndjwRdTp3ygpQPk6B5YBQNJ%2FToULh0WiLig%2BNDkzT2Fm7EnwN%2FAxcxxTgFtwj7KJEXBEaU2xNdV%2BO9qVK5do7OX%2FETfLTDMKhfxtyYZ5oE8l1vCCrPLnNFua6Cp4WygFiDSR6Sy6hLGNFUVlQMnC5xMa1W%2F1UELwhXq90WfUzHiTDFll5y4%2FoW%2BVONY5qM4EZzF8P0GcfKq31Q4FXctUCFcW4%2FmZ1AbRjGkgEq1CK9Y19HzG9hmCOky%2FrURYEnMydafbivgG227vOE%3D--sxcVEyDuFbJTgmfC--t0pJH5c2ko4kwb%2FF447qmA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8851ee02-d133-4242-ada7-c82bf58c6483"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.284633"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 87611,\n        \"name\": \"David Brown\",\n        \"email\": \"vyrwub7wmo@example.com\",\n        \"phone_number\": null,\n        \"address\": null\n    },\n    \"session\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4NzYxMSIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTY5OTQ3NzQ4MSwiZXhwIjoxNzAwNjg3MDgxLCJqdGkiOiIyOWE3Mjc0Ny00NGRiLTQ4MmYtYTk2Mi01MDA4ZWQ0ZTJmYzIifQ.vqZb5Hsp04mD4xkW0InhxtVAZLHkZozilGwOKT_P5Lg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{seconhand_email}}\",\r\n    \"password\": \"{{password}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/sign_in.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"sign_in.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Login Session",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{seconhand_email}}\",\r\n    \"password\": \"{{password}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/sign_in.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"sign_in.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:10:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4NzYxMSIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTY5OTQ3Nzg0NiwiZXhwIjoxNzAwNjg3NDQ2LCJqdGkiOiJhZmZhODQxMC1jZGI5LTQxZTctODRjNS0zMmVlMGRhYTlkYTIifQ.GJmsIkLrVvN6pdEIsZ3cfBW4yvga_HP8N6MNKlGzscM"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6601f7af2cb63c0086bc72b1c5e82357\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=1mDMEHs7yzv%2BW%2FRWMDL8YNtyo9j1ZXHt%2FDP067Lw653Q4ehwEBWBSf2pfGBH7blDYP0u23497yBR9jLMrGT27cDc8YoY27GYuscOWQMQ%2BVRtLATPTk0VRMyFQm8mXz4Y740xmH2PdRsrdd73KfwymOqZy34ERtjiQkBJFpecyffGL707QUXk74S6aViqzIkD0iMpcgir1OPA%2FRfxRWQiEvj6096l9phOdH9M%2BxntqxzMx414GZSZMV%2Fk9%2FMDvuTXZtuYOoYI5smjqawKIdMSU6F5sV9sW9AaVPd4mmavmj5UlHAU3qT0rQ7RwjckAjQ7NLe7152CeZYJn509CevihhlO6q9fkg%2Fo4c8Pe8DZCxWO0%2Fj5cm5TXEJuPirfTbOq6dGHDdf1q8Q%2BYF693H6OVJ6%2BzbIcxTWtzYtwr17wgp3xCT68bC4UdCKqPt0%3D--aZ4A89ykHHPZAQwF--kIrS4ekKZH6NBwr3UflFZQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "439653ca-494b-4254-8188-5bf41d54fd45"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.007579"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 87611,\n        \"name\": \"David Brown\",\n        \"email\": \"vyrwub7wmo@example.com\",\n        \"phone_number\": null,\n        \"address\": null\n    },\n    \"session\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4NzYxMSIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTY5OTQ3Nzg0NiwiZXhwIjoxNzAwNjg3NDQ2LCJqdGkiOiJhZmZhODQxMC1jZGI5LTQxZTctODRjNS0zMmVlMGRhYTlkYTIifQ.GJmsIkLrVvN6pdEIsZ3cfBW4yvga_HP8N6MNKlGzscM\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/categories.json?",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories.json"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/categories.json?",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories.json"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Nov 2023 18:23:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5411b7f44637465231bc27d78e1bb8ca\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8b9483e9-066c-45bf-98dc-ba63ba5f23fe"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.005990"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"categories\": [\n        {\n            \"id\": 1,\n            \"name\": \"Hobi\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/1\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Kendaraan\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/2\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Baju\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/3\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Elektronik\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/4\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Kesehatan\",\n            \"url\": \"https://secondhand.binaracademy.org/categories/5\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+									"});\r",
+									"\r",
+									"pm.test('Check URL', function() {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.category.url).to.be.a('string').and.to.have.lengthOf.at.least(2, 'URL should not empty') ;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/2.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"2.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Get Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories/2.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories",
+										"2.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 Nov 2023 18:18:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"85b8e1d46837aee21c1c602ac6fe813b\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2d63c3d5-461a-478c-bb4b-5d9a20002b6b"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.007897"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"category\": {\n        \"id\": 2,\n        \"name\": \"Kendaraan\",\n        \"url\": \"https://secondhand.binaracademy.org/categories/2\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Offers",
+			"item": [
+				{
+					"name": "Create Offer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//var get_user_id = (pm.environment.get(\"secondhand_userid\")-1)\r",
+									"//pm.environment.set(\"final_user_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"offer\": {\r\n    \"price\": 1000,\r\n    \"to_id\": 87612, //id user lain bukan id login sndiri\r\n    \"product_id\": {{secondhand_product_id}} //product id\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/offers.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"offers.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "succesfully Create Offer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"offer\": {\r\n    \"price\": 1000,\r\n    \"to_id\": 87592,\r\n    \"product_id\": 27\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/offers.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"offers.json"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 19:34:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/offers/40945"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"330dd19b6ddf0e7ba69a965183b1f77f\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=0O6jHeQeUI4ZkdW3kA%2BXVktR6bJDCHzEleFYUOOgVIjPVbnlMVKtp1CS0Llg%2FeqsI8ite78TaJGDoUMqDi%2FmF2XZ7gkRrLnZhcNllU0jOqHry4BrNFeUWtxUkVhG7fy2RfuCRLhNVrAzA0mmHgzxKWnn%2FWimWinumA5OhUrZSCw%2FGw9SP2bA8yf4KFCh0Fi2Z%2F9qxWR7nHrrGNOv1qhc1oav9EWV%2Fr1n%2Fiu85KKuwOHVOlwSMCh8iTVBpitIJdDQl7tXeZjYOHe2C38JzZrs2ONVXjdGhldGa3XfQzhgTOmej432spzoebdXNFKYEBRS9ZxMwdQqD%2BTfonQXB6tLEdeUk6IdsC4mU0VEVRf6%2FVp%2BkBSL7xloN0UAovttnEK1QjvMAXPq7MVBavnFjqaxYMSVncEaOCWTMTEOAwmE3RDCOuXBr%2FrsmndnZJM%3D--ZYavKH7MzxZLSVQc--1Ificmep6DuaHqkSLsLJWw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2dcf6f72-04db-40be-a8f0-9ee7e148567a"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.042198"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"offer\": {\n        \"id\": 40945,\n        \"price\": 1000,\n        \"status\": \"initiated\",\n        \"created_at\": \"2023-11-08T19:34:03.268Z\",\n        \"updated_at\": \"2023-11-08T19:34:03.268Z\",\n        \"product\": {\n            \"id\": 27,\n            \"name\": \"Anak orang\",\n            \"price\": 1000,\n            \"description\": \"Anak orang nemu di anime\",\n            \"category_id\": 2,\n            \"user_id\": 29,\n            \"created_at\": \"2023-03-06T15:13:17.792Z\",\n            \"updated_at\": \"2023-03-07T07:32:37.127Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/27.json\",\n            \"user\": {\n                \"id\": 29,\n                \"name\": \"Kobo\",\n                \"email\": \"very.mctavish@outlook.com\",\n                \"phone_number\": \"+62817412944\",\n                \"address\": \"jalan tupai terbang. meikarta\",\n                \"city\": {\n                    \"id\": 4,\n                    \"name\": \"Bandung\"\n                },\n                \"avatar\": {\n                    \"filename\": \"anyanya.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64bd193073778a6cdc846c241f2f89711d441f39/anyanya.jpg\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131\",\n                    \"filename\": \"anyadog.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131/anyadog.jpg\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e\",\n                    \"filename\": \"anyaaa.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e/anyaaa.jpg\"\n                }\n            ]\n        },\n        \"to\": {\n            \"id\": 87592,\n            \"name\": \"siswi\",\n            \"email\": \"d2dd@gmail.com\",\n            \"phone_number\": null,\n            \"address\": null\n        },\n        \"from\": {\n            \"id\": 87594,\n            \"name\": \"cipung\",\n            \"email\": \"d3dd@gmail.com\",\n            \"phone_number\": \"628888811\",\n            \"address\": \"jl aceh\",\n            \"city\": {\n                \"id\": 3,\n                \"name\": \"Jakarta\"\n            },\n            \"avatar\": {\n                \"filename\": \"WhatsApp Image 2023-10-09 at 21.57.17.jpeg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeU05QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--4113e5ae29d1075d26d797685c05a019f799709d/WhatsApp%20Image%202023-10-09%20at%2021.57.17.jpeg\"\n            }\n        }\n    }\n}"
+						},
+						{
+							"name": "Succesfully Create Offer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"offer\": {\r\n    \"price\": 1000,\r\n    \"to_id\": 87612, //id user lain bukan id login sndiri\r\n    \"product_id\": {{secondhand_product_id}} //product id\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/offers.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"offers.json"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:17:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/offers/40948"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f417ebda96e60a601033076ae541c5e\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=5L6Nuym%2Fg%2FPrN3%2F5dyG9yQgvB6NDwCWf7SjMfFg%2Bb8LlhWNmmkYKrqW5TX2ltA8%2F4iw%2FTSbv8FcoArmF248DhjY3QCobAJ%2BqyF5IOXt0Y4k44F7OwPkvfxX1Bu07081%2Bh7rtVYQfEfCPWGVsGXrWEZGLWqb54mWykHKyk0rIEJ7Jy%2F2qDOvfayOaDBFkGBLkeWe9oagg2vNPr42QDdmj1t3ri5%2Fkt6ymRxfNBtHhuOZtm5KCVrZeyB8Hnwp937ZlB%2FRsRxSl23GUkYYK9UI4jJhxZ5ZIsKIvupos6%2FIYIAlT1qPWLwmqBDtBmCRxLY3MZGPDOPnd%2BoFNlQYhV63oxbpPrLqP%2BYgO0eldMAGWVpqawBVtI61hUK1TiYJpSm8rXDNJ20tA638oePbf%2BMde1oDSSdMLwXBkkhjkfoyrBup1T3QAhAh6D%2F%2BzGZ4%3D--HTfeTCsouAs7WvKp--7kImz5smq9P7ml5U7HRXkw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "364378f6-8bb3-4870-942a-d3318497d3a7"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.044372"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"offer\": {\n        \"id\": 40948,\n        \"price\": 1000,\n        \"status\": \"initiated\",\n        \"created_at\": \"2023-11-08T21:17:12.852Z\",\n        \"updated_at\": \"2023-11-08T21:17:12.852Z\",\n        \"product\": {\n            \"id\": 27,\n            \"name\": \"Anak orang\",\n            \"price\": 1000,\n            \"description\": \"Anak orang nemu di anime\",\n            \"category_id\": 2,\n            \"user_id\": 29,\n            \"created_at\": \"2023-03-06T15:13:17.792Z\",\n            \"updated_at\": \"2023-03-07T07:32:37.127Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/27.json\",\n            \"user\": {\n                \"id\": 29,\n                \"name\": \"Kobo\",\n                \"email\": \"very.mctavish@outlook.com\",\n                \"phone_number\": \"+62817412944\",\n                \"address\": \"jalan tupai terbang. meikarta\",\n                \"city\": {\n                    \"id\": 4,\n                    \"name\": \"Bandung\"\n                },\n                \"avatar\": {\n                    \"filename\": \"anyanya.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64bd193073778a6cdc846c241f2f89711d441f39/anyanya.jpg\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131\",\n                    \"filename\": \"anyadog.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131/anyadog.jpg\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e\",\n                    \"filename\": \"anyaaa.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e/anyaaa.jpg\"\n                }\n            ]\n        },\n        \"to\": {\n            \"id\": 87612,\n            \"name\": \"David Brown\",\n            \"email\": \"r6c3tlx4lm@example.com\",\n            \"phone_number\": null,\n            \"address\": null\n        },\n        \"from\": {\n            \"id\": 87613,\n            \"name\": \"Bob Doe\",\n            \"email\": \"hgg5owlipx@example.com\",\n            \"phone_number\": \"0815953099489\",\n            \"address\": \"Jalan Pahlawan, Yogyakarta, East Java\",\n            \"city\": {\n                \"id\": 3,\n                \"name\": \"Jakarta\"\n            },\n            \"avatar\": {\n                \"filename\": \"WhatsApp Image 2023-10-09 at 21.57.17.jpeg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekE5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ccc34fc634bd9112f474f0894015133ccc7f6e54/WhatsApp%20Image%202023-10-09%20at%2021.57.17.jpeg\"\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Offers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/87611/offers.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"87611",
+								"offers.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully List Offers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/87592/offers.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"87592",
+										"offers.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 18:31:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"075c58a96672fc2f6ee3f91318a94ed4\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=fuDsCT6mSZ5wS616%2BtaBus5qHxzVyM7Vy1RdvBmgtirfYblY%2F91VeLJroCboxtPc884WkmgMKHnm116aIYMGboJPxNqz7rnXZTR3F1am3WlUWEPrXLRbYuEykicVVRC66TQo%2Be1uWheiJrLaBghULJvrnS4XkJIjn%2F0lDIRsvyGIGqssNEUHq05Jm7CwzlpioBE5t4exdnJSHkBSCD5JOWD7lxJHv1QeDSYlAZEiaqiXp%2FeDQ5aJbAZeq%2B5pEHHw2f2lnvH5qN5H9XIh%2F7PAU32GmUENODaMJpF%2Bj%2B45QC25W%2FTSWlybWSWAxC2iU%2BnyuVxLtFD%2Fbg13%2BWD0W0JtLNFF8aYpVk2hj%2BPq6uQSw06CYQ6QY%2FNmrPhD3tbGWJ%2FXslzWVMhj3CdYBRMiB%2BiPc85UtLW5jqV6aao6Euuaw2IYje%2FFgg8U7hGHcAM%3D--YBENnpu8XWMnolap--rYWfK3HmpXoLYLq7NUNflA%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ae512a4f-6823-4bf3-94dc-1476903fdf9d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.012416"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"page_next\": null,\n        \"page_previous\": null,\n        \"page_size\": 10,\n        \"page_count\": 1,\n        \"total\": 0\n    },\n    \"offers\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Offers",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/offers/87612.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"offers",
+								"87612.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product[name]",
+									"value": "cipung dijual",
+									"type": "text"
+								},
+								{
+									"key": "product[price]",
+									"value": "19.876",
+									"type": "text"
+								},
+								{
+									"key": "product[description]",
+									"value": "mahal bg",
+									"type": "text"
+								},
+								{
+									"key": "product[status]",
+									"value": "draft",
+									"type": "text"
+								},
+								{
+									"key": "product[category_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product[images][]",
+									"type": "file",
+									"src": "/C:/Users/USER/Downloads/cipung-64eccd2308a8b50716533633.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/products.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product[name]",
+											"value": "cipung dijual",
+											"type": "text"
+										},
+										{
+											"key": "product[price]",
+											"value": "19.876",
+											"type": "text"
+										},
+										{
+											"key": "product[description]",
+											"value": "mahal bg",
+											"type": "text"
+										},
+										{
+											"key": "product[status]",
+											"value": "draft",
+											"type": "text"
+										},
+										{
+											"key": "product[category_id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "product[images][]",
+											"type": "file",
+											"src": "/C:/Users/USER/Downloads/cipung-64eccd2308a8b50716533633.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/products.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:32:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Location",
+									"value": "https://secondhand.binaracademy.org/products/51674"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"64d6614a7d4e44eaa57d5272a70abe76\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=jjSkoZAs5GQl8oAQ%2BrGPyjZ6DJZyRt1b1swTHWYoyO%2B04OBObneorYC7LUS6HsazHil%2BGD0mVS8IpaOes75DAb8Opz58%2F%2BvDiN6wtE3QFKAt7lCiQ7Lsqqse8Hw60KksxAvpIfghKGzhjATTUXP6I8O%2FLHW08Tr%2BEK1IU30a6HIARmQzCbEQn7YiqMoUczNPnW9%2FqAvFqxLOKYiZChMUuwEcgHA2Z24NqWoJG8TiuHK0sH0rOZacTuGVSHQuXKALgqSzeX7JEPljFbn9H3MPdoT7CZJ25Kms%2BRPvQ5Dt1Vk30xaBpR3JJZcaQXDRpFss8A%2BjOvE7hD3xcr4Q3PUf9Eo8AexqnycjGjWmgyeY6k37yXoCYz2dQgMI4b33N3M1yBjQNotExJtSW%2BQrM0s6sASa9jDFLeQaU%2BVSpWC%2B%2BWBmN%2Fe%2BddT%2BnbVEeFo%3D--CzJbZ0WGEP4KFMpN--e7N3DXWP3d1ienG0LZnE8Q%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "1ae8244a-3078-4c89-9ceb-e2ffd4b8327b"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.401701"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"id\": 51674,\n        \"name\": \"cipung dijual\",\n        \"price\": 19.876,\n        \"description\": \"mahal bg\",\n        \"category_id\": 1,\n        \"user_id\": 87613,\n        \"created_at\": \"2023-11-08T21:32:38.803Z\",\n        \"updated_at\": \"2023-11-08T21:32:38.808Z\",\n        \"url\": \"https://secondhand.binaracademy.org/products/51674.json\",\n        \"user\": {\n            \"id\": 87613,\n            \"name\": \"Bob Doe\",\n            \"email\": \"hgg5owlipx@example.com\",\n            \"phone_number\": \"0815953099489\",\n            \"address\": \"Jalan Pahlawan, Yogyakarta, East Java\",\n            \"city\": {\n                \"id\": 3,\n                \"name\": \"Jakarta\"\n            },\n            \"avatar\": {\n                \"filename\": \"WhatsApp Image 2023-10-09 at 21.57.17.jpeg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekE5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ccc34fc634bd9112f474f0894015133ccc7f6e54/WhatsApp%20Image%202023-10-09%20at%2021.57.17.jpeg\"\n            }\n        },\n        \"images\": [\n            {\n                \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekU5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--35cce6ee1aac23be3bd2b4777acbb69aa3344a0a\",\n                \"filename\": \"cipung-64eccd2308a8b50716533633.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekU5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--35cce6ee1aac23be3bd2b4777acbb69aa3344a0a/cipung-64eccd2308a8b50716533633.jpg\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"secondhand_email\", jsonData.products[0].id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully List Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 20:43:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"350e2d708409cabed49591ccc07bad50\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=SerSCrHnw7rnTG%2B12ix5yUrCnIpclgVuuN6C%2Br94KnCPP4si4iAOZSA7fkgVcJIGYmuvRD5Wgar%2FByQ5uuRyjz8tbE1reS%2FEbUVz54swjQqCDP1Dgd%2Bq%2FWcZs3rmKV8ItVWrjKOKdfJhPzvvfzOyUm0dZLYvXsQTU4Lxq8S3jDnR4ZE4ruwj%2B%2BxXsaFNU1nsUdsBc4Dl%2BmL1IdXRgLY53OGncAiIqaXXjUoFGB44xAWmjt0%2Fc2MxDFLmH3hhT1Ya0W5r4oBtQ2uJga3%2BJ6NGwB0FfFAGVjQb6UO54Hc6O4xezeTA5ogcwAPyshnczJ9fvsRmyuQkBiZSm08H1O7brgVpJuZA9NhcrBCNIVmSxQQGvUkA0EmUq1%2BKAZtZoXOlvE3UyVO%2B9N9fH2UOwh1oMrMWd6YIlz%2FuAlm3qLgi%2F5F6JNYmgV4VHU7n0eY%3D--bLV5L6UJgFH0dffB--jfKdtvf9xh3opGPrqqvFkQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "841e0f65-c4a2-4e92-a09e-6e160132e237"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.061120"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"page_next\": 2,\n        \"page_previous\": null,\n        \"page_size\": 10,\n        \"page_count\": 2265,\n        \"total\": 22642\n    },\n    \"products\": [\n        {\n            \"id\": 27,\n            \"name\": \"Anak orang\",\n            \"price\": 1000,\n            \"description\": \"Anak orang nemu di anime\",\n            \"category_id\": 2,\n            \"user_id\": 29,\n            \"created_at\": \"2023-03-06T15:13:17.792Z\",\n            \"updated_at\": \"2023-03-07T07:32:37.127Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/27.json\",\n            \"user\": {\n                \"id\": 29,\n                \"name\": \"Kobo\",\n                \"email\": \"very.mctavish@outlook.com\",\n                \"phone_number\": \"+62817412944\",\n                \"address\": \"jalan tupai terbang. meikarta\",\n                \"city\": {\n                    \"id\": 4,\n                    \"name\": \"Bandung\"\n                },\n                \"avatar\": {\n                    \"filename\": \"anyanya.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64bd193073778a6cdc846c241f2f89711d441f39/anyanya.jpg\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131\",\n                    \"filename\": \"anyadog.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131/anyadog.jpg\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e\",\n                    \"filename\": \"anyaaa.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e/anyaaa.jpg\"\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Laptop\",\n            \"price\": 3500000,\n            \"description\": \"Laptop bekas pemakaian pribadi hanya 3 bulan, minat langsung nego aja gan.\",\n            \"category_id\": 4,\n            \"user_id\": 4,\n            \"created_at\": \"2023-01-04T02:23:47.687Z\",\n            \"updated_at\": \"2023-03-03T08:35:20.816Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/2.json\",\n            \"user\": {\n                \"id\": 4,\n                \"name\": \"clarke griffin\",\n                \"email\": \"blastiningrum@binar.co.id\",\n                \"phone_number\": \"0812213443553\",\n                \"address\": \"Jakarta\",\n                \"city\": {\n                    \"id\": 3,\n                    \"name\": \"Jakarta\"\n                },\n                \"avatar\": {\n                    \"filename\": \"5.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--18f8ee9bb33a8fd7fb53102edf7ee7b038b27f2f/5.png\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61dab0ba21a744b230fcaedf8b814059b1464542\",\n                    \"filename\": \"L-19.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61dab0ba21a744b230fcaedf8b814059b1464542/L-19.png\"\n                }\n            ]\n        },\n        {\n            \"id\": 79,\n            \"name\": \"barang\",\n            \"price\": 788,\n            \"description\": \"jj\",\n            \"category_id\": 1,\n            \"user_id\": 94,\n            \"created_at\": \"2023-03-09T14:01:25.052Z\",\n            \"updated_at\": \"2023-03-09T15:33:43.210Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/79.json\",\n            \"user\": {\n                \"id\": 94,\n                \"name\": \"kk\",\n                \"email\": \"jj@gmail.com\",\n                \"phone_number\": \"0999\",\n                \"address\": \"jj\",\n                \"city\": {\n                    \"id\": 1,\n                    \"name\": \"Solo\"\n                },\n                \"avatar\": {\n                    \"filename\": \"pngwing.com.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NDIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b39ff45386abe1e9469ff56207194c4d0f2a416/pngwing.com.png\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRDIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--627fc64d7c9622ecfc55ebda16751298ab187439\",\n                    \"filename\": \"pngwing.com (1).png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRDIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--627fc64d7c9622ecfc55ebda16751298ab187439/pngwing.com%20(1).png\"\n                }\n            ]\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Hoodie \",\n            \"price\": 0,\n            \"description\": \"Hoodie baru\",\n            \"category_id\": 3,\n            \"user_id\": 19,\n            \"created_at\": \"2023-03-06T12:50:14.801Z\",\n            \"updated_at\": \"2023-03-13T04:00:25.264Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/15.json\",\n            \"user\": {\n                \"id\": 19,\n                \"name\": \"Atalla Satrio\",\n                \"email\": \"johndoe@gmail.com\",\n                \"phone_number\": \"adawdawd\",\n                \"address\": \"2wqeq2e\",\n                \"city\": {\n                    \"id\": 2,\n                    \"name\": \"Jogja\"\n                },\n                \"avatar\": {\n                    \"filename\": \"Screenshot_1.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBjUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2cccfd6dae50260c900c2a2de963e3531f66153b/Screenshot_1.png\"\n                }\n            },\n            \"images\": []\n        },\n        {\n            \"id\": 771,\n            \"name\": \"Toyota Kijang Innova\",\n            \"price\": 370000000,\n            \"description\": \"HItam, Baru\",\n            \"category_id\": 2,\n            \"user_id\": 4923,\n            \"created_at\": \"2023-03-17T08:20:38.457Z\",\n            \"updated_at\": \"2023-03-17T08:42:26.914Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/771.json\",\n            \"user\": {\n                \"id\": 4923,\n                \"name\": \"Binar QA\",\n                \"email\": \"tugas@gmail.com\",\n                \"phone_number\": \"+628122222222\",\n                \"address\": \"Jakarta\",\n                \"city\": {\n                    \"id\": 3,\n                    \"name\": \"Jakarta\"\n                },\n                \"avatar\": {\n                    \"filename\": \"tax.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f35aea4cb3f039a824c152406656575abda611f/tax.png\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--609f4283026d63dd2776fba74256e405f0939020\",\n                    \"filename\": \"innova.jpeg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--609f4283026d63dd2776fba74256e405f0939020/innova.jpeg\"\n                }\n            ]\n        },\n        {\n            \"id\": 57,\n            \"name\": \"Kucing Himalaya\",\n            \"price\": 1300000,\n            \"description\": \"The Himalayan, is a breed or sub-breed of long-haired cat similar in type to the Persian, with the exception of its blue eyes and its point colouration, which were derived from crossing the Persian with the Siamese.\",\n            \"category_id\": 1,\n            \"user_id\": 74,\n            \"created_at\": \"2023-03-09T04:18:26.127Z\",\n            \"updated_at\": \"2023-03-09T08:41:23.292Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/57.json\",\n            \"user\": {\n                \"id\": 74,\n                \"name\": \"Kucing\",\n                \"email\": \"joluqezi@brand-app.biz\",\n                \"phone_number\": \"081332843474\",\n                \"address\": \"Jalan Jakarta\",\n                \"city\": {\n                    \"id\": 3,\n                    \"name\": \"Jakarta\"\n                },\n                \"avatar\": {\n                    \"filename\": \"jenis-jenis-kucing-peliharaan-12.jpeg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3a7fcb3f898a3c6f47fa5cb1d014b855ef74f84/jenis-jenis-kucing-peliharaan-12.jpeg\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21a80c41a93b7ecf7794d7f8c03ff90b48f9b1b9\",\n                    \"filename\": \"Kucing_Persia_Himalaya.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21a80c41a93b7ecf7794d7f8c03ff90b48f9b1b9/Kucing_Persia_Himalaya.jpg\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ab20222c5317559c3f6bd505e43305c0776d7b95\",\n                    \"filename\": \"jenis-jenis-kucing-peliharaan-12.jpeg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ab20222c5317559c3f6bd505e43305c0776d7b95/jenis-jenis-kucing-peliharaan-12.jpeg\"\n                }\n            ]\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Supra Bapak\",\n            \"price\": 7000000,\n            \"description\": \"Tipe Mesin: 4-Langkah, SOHC, Silinder Tunggal\\r\\nKapasitas Mesin: 124,89 cc\\r\\nSistem Suplai Bahan Bakar: PGM-FI (Programmed Fuel Injection)\\r\\nDiameter X Langkah: 52,4 x 57,9 mm\\r\\nTipe Tranmisi: 4 Speed, Rotary\\r\\nRasio Kompresi: 9,3:1\\r\\nDaya Maksimum: 7,40 kW (10,1 PS) / 8.000 rpm\\r\\nTorsi Maksimum: 9,30 Nm (0,95 kgf.m) / 4.000 rpm\\r\\nTipe Starter: Starter Kaki dan Elektrik\\r\\nTipe Kopling: Multiplate Wet Clutch with Coil Spring\\r\\nSistem Pendingin Mesin: Pendingin Udara\\r\\nPola Perpindahan Gigi: N-1-2-3-4-N\",\n            \"category_id\": 2,\n            \"user_id\": 1,\n            \"created_at\": \"2023-01-04T06:49:43.559Z\",\n            \"updated_at\": \"2023-03-06T13:48:09.689Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/3.json\",\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Fikri Rahmat Nurhidayat\",\n                \"email\": \"fnurhidayat@binar.co.id\",\n                \"phone_number\": \"+6282227673781\",\n                \"address\": \"Jl. Arjuna I B38\",\n                \"city\": {\n                    \"id\": 1,\n                    \"name\": \"Solo\"\n                },\n                \"avatar\": {\n                    \"filename\": \"Mr.House.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e970b28380f4faea3cc9440034b1d7617bd45c4e/Mr.House.png\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3afa565d5f7e332c6df6f69a4ddc0de0606a15c5\",\n                    \"filename\": \"Supra.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3afa565d5f7e332c6df6f69a4ddc0de0606a15c5/Supra.jpg\"\n                }\n            ]\n        },\n        {\n            \"id\": 20,\n            \"name\": \"testiiinnggg\",\n            \"price\": 5000,\n            \"description\": \"hanyaa testing\",\n            \"category_id\": 2,\n            \"user_id\": 22,\n            \"created_at\": \"2023-03-06T13:19:41.495Z\",\n            \"updated_at\": \"2023-03-06T14:27:15.346Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/20.json\",\n            \"user\": {\n                \"id\": 22,\n                \"name\": \"3334234\",\n                \"email\": \"testinglurrr@gmail.com\",\n                \"phone_number\": \"asdasd\",\n                \"address\": \"dfgdfgdfg\",\n                \"city\": {\n                    \"id\": 1,\n                    \"name\": \"Solo\"\n                },\n                \"avatar\": {\n                    \"filename\": \"ezgif.com-gif-maker.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBmUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594b1de0568f628d14fafa2bbcd512e74cb0f181/ezgif.com-gif-maker.jpg\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWDg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--99c593b163fcea6d09ea87150ea92d0c52739363\",\n                    \"filename\": \"ezgif.com-gif-maker.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWDg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--99c593b163fcea6d09ea87150ea92d0c52739363/ezgif.com-gif-maker.jpg\"\n                }\n            ]\n        },\n        {\n            \"id\": 26,\n            \"name\": \"Wallpaper Win11\",\n            \"price\": 50000,\n            \"description\": \"Ini adalah wallpaper windows 11 keren\",\n            \"category_id\": 4,\n            \"user_id\": 27,\n            \"created_at\": \"2023-03-06T15:11:40.135Z\",\n            \"updated_at\": \"2023-03-06T15:15:06.990Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/26.json\",\n            \"user\": {\n                \"id\": 27,\n                \"name\": \"wallpaper windows 11\",\n                \"email\": \"ucok4321@gmail.com\",\n                \"phone_number\": \"08123456789\",\n                \"address\": \"Jl.in aja dulu\",\n                \"city\": {\n                    \"id\": 1,\n                    \"name\": \"Solo\"\n                },\n                \"avatar\": {\n                    \"filename\": \"Inspirational Light.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29d7e0ec0305f86e921fb9fb3ef6c762c3ef4412/Inspirational%20Light.png\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d93f60bd1addb1bcaeddb9148f7f999d559790df\",\n                    \"filename\": \"Inspirational Light.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d93f60bd1addb1bcaeddb9148f7f999d559790df/Inspirational%20Light.png\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4427ae32634597aa21b836d88d0004af831ac1d5\",\n                    \"filename\": \"Inspirational Dark.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4427ae32634597aa21b836d88d0004af831ac1d5/Inspirational%20Dark.png\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYU09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce2654aadf9b36b26a7999aa9fb432ba88ca45ae\",\n                    \"filename\": \"Inspirational Light.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYU09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce2654aadf9b36b26a7999aa9fb432ba88ca45ae/Inspirational%20Light.png\"\n                },\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be43712debd3d50e674cc78cf893a1b084f0bfe1\",\n                    \"filename\": \"Inspirational Dark.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be43712debd3d50e674cc78cf893a1b084f0bfe1/Inspirational%20Dark.png\"\n                }\n            ]\n        },\n        {\n            \"id\": 1567,\n            \"name\": \"mobil\",\n            \"price\": 1.2e+55,\n            \"description\": \"mobil sultan\",\n            \"category_id\": 2,\n            \"user_id\": 4550,\n            \"created_at\": \"2023-03-31T15:57:18.274Z\",\n            \"updated_at\": \"2023-03-31T16:03:01.602Z\",\n            \"url\": \"https://secondhand.binaracademy.org/products/1567.json\",\n            \"user\": {\n                \"id\": 4550,\n                \"name\": \"bbbb@$@$$@$\",\n                \"email\": \"bb@bb\",\n                \"phone_number\": \"hhghjgjhg777iuhukhjkbjn\",\n                \"address\": \"Jl. Tanah Tinggi, Bandung\",\n                \"city\": {\n                    \"id\": 2,\n                    \"name\": \"Jogja\"\n                },\n                \"avatar\": {\n                    \"filename\": \"SummaryPage.png\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0f962abef0f2c09807604ee2a92e720d37248a68/SummaryPage.png\"\n                }\n            },\n            \"images\": [\n                {\n                    \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtxIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0299bca735e7568813a995cd6f2f5a8ba212e062\",\n                    \"filename\": \"Foto Mobil Sport Terbaru 2014.jpg\",\n                    \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtxIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0299bca735e7568813a995cd6f2f5a8ba212e062/Foto%20Mobil%20Sport%20Terbaru%202014.jpg\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{secondhand_product_id}}.json"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Get Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{base_url}}/products/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{secondhand_product_id}}.json"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 20:43:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c9309070c93d4b84012e9b38035744df\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=xgPT8U3ZXRIv0FhClX8N4%2BR83KJVRQAxV%2FSY4sKuGo0KnTvHhh%2FzdaGZCezT7NkGCkGQChm6jZPUViOpNYNDfRDE4zP6dkLatOmTbb3ut%2BulL%2FsJa3rsu0LMf%2FjO2pkWid%2Fr7wdM3u8gbIczir3WvAYLhtdC8RDNkkUeiVmTHMX%2BQ4qegZQnZ5bvRNx%2FMmqFv7k9NJbpMPBUE%2B1rzwCH%2F3K%2FaOUL4fS6CgM2efFPwf9p4g%2FFOXd%2FiVjJMTTrxnnCzBuyp2dfIQwprZ1RrL7HarmkdZdbleoUyr5ti6npikzWbFwm2%2F0hjWFXQs1y7YtzLCPLJrEq8btdA2FWnDwFwjiCJ3o4os5e336mSn%2B2zPA5H2gYOHNkCGUGkDHyGzKKNkFVwoGPv6M61dgrt8uqyZBro%2FM1PffmbxMvCQgo7q9u%2F4Lt5z8xE%2BOfWao%3D--Ksidlj666HyTUDTI--hCuQ%2B%2BC7zGq8zJJe1fvzUw%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "b3c757c0-dd2c-47a0-992b-c800d6c98a7c"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.018535"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"id\": 27,\n        \"name\": \"Anak orang\",\n        \"price\": 1000,\n        \"description\": \"Anak orang nemu di anime\",\n        \"category_id\": 2,\n        \"user_id\": 29,\n        \"created_at\": \"2023-03-06T15:13:17.792Z\",\n        \"updated_at\": \"2023-03-07T07:32:37.127Z\",\n        \"url\": \"https://secondhand.binaracademy.org/products/27.json\",\n        \"user\": {\n            \"id\": 29,\n            \"name\": \"Kobo\",\n            \"email\": \"very.mctavish@outlook.com\",\n            \"phone_number\": \"+62817412944\",\n            \"address\": \"jalan tupai terbang. meikarta\",\n            \"city\": {\n                \"id\": 4,\n                \"name\": \"Bandung\"\n            },\n            \"avatar\": {\n                \"filename\": \"anyanya.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64bd193073778a6cdc846c241f2f89711d441f39/anyanya.jpg\"\n            }\n        },\n        \"images\": [\n            {\n                \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131\",\n                \"filename\": \"anyadog.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d55c21f2bea1f33c62c7d02dd19de82bdd3bc131/anyadog.jpg\"\n            },\n            {\n                \"id\": \"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e\",\n                \"filename\": \"anyaaa.jpg\",\n                \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de90db16fec20a899e6273300718553689a0606e/anyaaa.jpg\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/87613.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"87613.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Update Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/87613.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"87613.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:41:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Link",
+									"value": "</assets/application-8719702cfbda8df80ef05ec97d6e3439f691b635cf6f90772d44af13d07cdc5f.css>; rel=preload; as=style; nopush"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ba2fb209c504797e381eb288ad523bf3\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=BOZJZqu78qJovdVj9GUXerX1wDtaqcE7lxBQW3BR0TQoUw1Lpte6lpKL4rgyjW%2BjRveBbYl6cWS3%2FJUJXsw8M0zatwIVMG3eVd05WfKduTXWTSpc4wGbYszisJ4CGDZCM33ffLSWmiWzGEj0ijxD%2BLwu887No8xMN0uys3UFCENwFew19Du3piJsXdNYMh%2FDTVJHNTF6%2FjJJcwzkcjlYTJVvawRy3v0glcZv%2BmHfbHe6ImjdHGALkRJaEdaJeEfxcNTNQgR5AXOKi5JCYi0xWKk9eR3Bf3J%2Bn1wW2wmMP9l4zl3GeFRCXswdIDfHgLVs%2FBcTAzlfk7gBkMkMIDLzCsbiF19Vu8lBw%2FbFfUwqPEdmStIsGllc7pBuWyC4a8MojVxYOZfBlKsO2XndN8KNviz%2BDQb78fs%2BcV1bBJg9fst6xlzfkDQWn%2Fz2ujw%3D--LgF3hoHi3Gr%2FQqfR--Spi9iJWoQgROUGXIa7%2F5ww%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d6941613-ae31-419d-97aa-3345608e6315"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.091682"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html>\n    <head>\n        <title>SecondHand</title>\n        <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n        <meta name=\"csrf-param\" content=\"authenticity_token\" />\n        <meta name=\"csrf-token\" content=\"UJWIqcthumrkSgGG9KquRb2JeORbSSVrms2MtgKa4OH7aNIjSJ9ix5fqDx7T6Zo8rMuSeghayNuwI_4NITDSvQ\" />\n        <link rel=\"stylesheet\" href=\"/assets/application-8719702cfbda8df80ef05ec97d6e3439f691b635cf6f90772d44af13d07cdc5f.css\" media=\"all\" data-turbo-track=\"reload\" />\n        <script src=\"/assets/application-129503345137b5d28c19109dabc42b97ed2206ca1c50e66a68eac5b5353990e4.js\" data-turbo-track=\"reload\" defer=\"defer\"></script>\n    </head>\n    <body>\n        <nav class=\"navbar navbar-expand-lg navbar-light bg-white shadow fixed-top\">\n            <div class=\"container\">\n                <a class=\"navbar-brand px-5 py-3\" href=\"/\"></a>\n                <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n                    <span class=\"navbar-toggler-icon\"></span>\n                </button>\n                <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n                    <form class=\"d-flex ms-0 ms-lg-4 my-4 my-lg-0\" method=\"GET\" action=\"/\" role=\"search\">\n                        <div class=\"input-group rounded-pill bg-light p-1 search\">\n                            <input name=\"q\" class=\"form-control bg-transparent border-0 form-search\" type=\"search\" placeholder=\"Cari di sini ...\" aria-label=\"Search\" value=\"\">\n                            <i class=\"bi bi-search input-group-text bg-transparent border-0\"></i>\n                        </div>\n                    </form>\n                    <div class=\"ms-auto\">\n                        <ul class=\"navbar-nav\">\n                            <li class=\"nav-item me-0 me-lg-2 fs-5\" aria-current=\"page\">\n                                <a class=\"nav-link d-flex align-items-center \" href=\"/products\">\n                                    <i class=\"bi bi-list-ul me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Produk Saya</span>\n                                </a>\n                            </li>\n                            <li class=\"nav-item me-0 me-lg-2 fs-5 d-block d-xl-none position-relative\">\n                                <a class=\"nav-link d-flex align-items-center\" href=\"/notifications\">\n                                    <i class=\"bi bi-bell me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Notifikasi</span>\n                                </a>\n                            </li>\n                            <li class=\"nav-item dropdown me-0 me-lg-2 fs-5 d-none d-xl-block position-relative\">\n                                <a class=\"nav-link dropdown-toggle position-relative\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">\n                                    <i class=\"bi bi-bell\"></i>\n                                </a>\n                                <ul class=\"dropdown-menu notification-dropdown-menu px-4\">\n                                    <li class=\"p-2\">Tidak ada notifikasi</li>\n                                </ul>\n                            </li>\n                            <li class=\"nav-item fs-5 d-block d-lg-none\">\n                                <a class=\"nav-link d-flex align-items-center\" href=\"/profiles\">\n                                    <i class=\"bi bi-person me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Profil Saya</span>\n                                </a>\n                            </li>\n                            <li class=\"nav-item fs-5 d-block d-lg-none\">\n                                <form action=\"/users/sign_out\" accept-charset=\"UTF-8\" method=\"post\">\n                                    <input type=\"hidden\" name=\"_method\" value=\"delete\" autocomplete=\"off\" />\n                                    <input type=\"hidden\" name=\"authenticity_token\" value=\"5chNdutRGDvbTBr7sAISpHl2CnfUJht-l-PTK3Lr_bdrpXhPihIY2-ul_x26Uj1xAKCy4-RNf75HuXyBHu74Ew\" autocomplete=\"off\" />\n                                    <button name=\"button\" type=\"submit\" class=\"nav-link btn btn-link btn-sm text-decoration-none fs-5 logout-button\">\n                                        <i class=\"bi bi-arrow-bar-left me-3\"></i>\n                                        <span class=\"fs-6\">Keluar</span>\n                                    </button>\n                                </form>\n                            </li>\n                            <li class=\"nav-item dropdown fs-5 d-none d-lg-block\">\n                                <a class=\"nav-link dropdown-toggle d-flex align-items-center\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">\n                                    <i class=\"bi bi-person me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Profil Saya</span>\n                                </a>\n                                <ul class=\"dropdown-menu\">\n                                    <li>\n                                        <a class=\"nav-user\" href=\"/profiles\">\n                                            <div class=\"d-flex align-items-center justify-content center flex-column py-2\">\n                                                <img class=\"img-avatar w-100 rounded-4 mb-2\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekE5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ccc34fc634bd9112f474f0894015133ccc7f6e54/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hSeVpYTnBlbVZmZEc5ZmJHbHRhWFJiQjJrQ2tBRnBBcEFCIiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--dad1ea9fd9c33e8a8e0e49b4c08b1d130563e04b/WhatsApp%20Image%202023-10-09%20at%2021.57.17.jpeg\" />\n                                                <div class=\"card-body text-center\">\n                                                    <div class=\"fs-5 fw-bold\">Bob</div>\n                                                    <div class=\"fs-6 text-black-50\">Jakarta</div>\n                                                </div>\n                                            </div>\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <hr class=\"dropdown-divider\">\n                                    </li>\n                                    <li>\n                                        <form action=\"/users/sign_out\" accept-charset=\"UTF-8\" method=\"post\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"delete\" autocomplete=\"off\" />\n                                            <input type=\"hidden\" name=\"authenticity_token\" value=\"1M8zJ6h5HoR8-0PiYtJh6xdXqiRySuD9MU_lp5nPC4ZaogYeyToeZEwSpgRogk4-boESsEIhhD3hFUoN9coOIg\" autocomplete=\"off\" />\n                                            <button name=\"button\" type=\"submit\" class=\"btn btn-link text-decoration-none\">\n                                                <i class=\"bi bi-arrow-bar-left me-3\"></i>\n            Keluar\n                                            </button>\n                                        </form>\n                                    </li>\n                                </ul>\n                            </li>\n                        </ul>\n                        <!-- TODO: Move this somewhere convinient -->\n                        <script>\n  var notifications = document.querySelectorAll(\"a.notification\")\n\n  notifications.forEach((notification) => {\n    if (notification.dataset.notificationRead == \"false\") {\n      notification.addEventListener('click', async function () {\n        await fetch(`/notifications/${notification.dataset.notificationId}/read`, {\n          credentials: \"same-origin\",\n          method: \"PUT\"\n        });\n      });\n    }\n  })\n</script>\n                    </div>\n                </div>\n            </div>\n        </nav>\n        <section class=\"pt-5 mt-5\">\n            <section class=\"mt-lg-5 mb-5 w-100 d-flex gap-lg-5\">\n                <div class=\"promo left bg-success rounded-end flex-grow-1 align-self-center d-none d-lg-block\"></div>\n                <div class=\"promo center flex-grow-1 bg-warning rounded-lg-4 rounded-0\">\n                    <div class=\"row p-5\">\n                        <div class=\"col\">\n                            <h1 class=\"fw-bold mb-4\">Bulan Ramadhan\n                                <br>Banyak diskon!\n                            </h1>\n                            <h6 class=\"fs-5 fw-normal\" >Diskon Hingga</h6>\n                            <h5 class=\"display-6 text-danger fw-bold\">60%</h5>\n                        </div>\n                        <div class=\"col\">\n      </div>\n                    </div>\n                </div>\n                <div class=\"promo right bg-info rounded-start flex-grow-1 align-self-center d-none d-lg-block\"></div>\n            </section>\n            <section class=\"container\">\n                <h5 class=\"fw-bold mb-4\">Telusuri Kategori</h5>\n                <nav class=\"nav row gap-4 px-2 px-lg-0\">\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center active\" href=\"/\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n      Semua\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=1\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Hobi\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=2\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Kendaraan\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=3\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Baju\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=4\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Elektronik\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=5\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Kesehatan\n                    </a>\n                </nav>\n                <div class=\"row my-5 g-5\" id='products'>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51671\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd1k5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9cb0b6d16e426014a43c71fb3476603f822077eb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">UPS</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 2.195.625</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51670\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd1U5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--dd46f26def70acb82d1fea3f63c06f901c05fe7a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Software License</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 4.311.390</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51669\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd1E5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1c995bb1a7f9ddb374bcd320e6e8127eeffe30a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Monitor</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 4.841.830</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51668\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd005QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f1fec1f52c85861e7f569e69c68286a9a72d3a61/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">SSD</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 592.540</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51667\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0k5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b0864b19367108ac515a039ae8455c5dee0e3471/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Mouse</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 2.431.296</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51666\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0U5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a2571ba5665b4974d67f69e9c8a6f56f234fa7db/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Scanner</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 450.961</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51665\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0E5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--73c1c777d4994399739901edcc90ca7f2b239a3b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">External Hard Drive</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 1.137.553</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51664\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzg4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--20f553f10e13caa66a73804ef3d9cc7bb6a43430/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Motherboard</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 3.570.814</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51663\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzQ4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--99a53d881d6be62b02eaf8eaa223ca15ae104ace/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Mouse</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 447.960</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51662\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzA4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ddc85d2a3ad542a7ecd85b5effb562e842830446/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">RAM</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 4.482.773</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div role=\"navigation\" aria-label=\"Pagination\" class=\"d-flex gap-4 align-items-center justify-content-center my-5\">\n                        <span class=\"previous_page disabled\" aria-disabled=\"true\">&#8592; Previous</span>\n                        <a class=\"next_page\" rel=\"next\" href=\"/?page=2\">Next &#8594;</a>\n                    </div>\n                </div>\n            </section>\n            <div class=\"sticky-bottom d-flex align-items-center justify-content-center py-4\">\n                <a class=\"btn btn-primary btn-lg rounded-4 d-inline-flex align-items-center justify-content-space-between px-5\" href=\"/products/new\">\n                    <i class=\"bi bi-plus fs-2 me-3\"></i>\n                    <span class=\"fs-6\">Jual</span>\n                </a>\n            </div>\n        </section>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/51672.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"51672.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/products/51672.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"51672.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:40:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Link",
+									"value": "</assets/application-8719702cfbda8df80ef05ec97d6e3439f691b635cf6f90772d44af13d07cdc5f.css>; rel=preload; as=style; nopush"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"804dfc49adf51119594fe1d08ae0c40c\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=x%2Fx7neSJonEx0iV1lVBHczgT%2BzJKvJ9D1MVJkpM%2Fc3e1AmYttEwiw3PZlg4Yn0c3DQY2kKYSBzuxkRIALdsxDIAUtXXFsM72mu8xmRKKDzqmuZla13cj%2Fwm8l%2FzbyidhXwPAELiiIWRiEfVEonH6JRMPWSp0JvYtCU4%2Fi07uBt3orU3Df%2FrK2FHUCJffcKQHeOMy4P1W%2B51Mmm%2BFSAGl9CKH0PmypQ7mgyExZcNDOl7Yn4YndyvQWYZipqrgAakeVyIZ9OymGVRp6CVY8scuL53f72kCvsFMBFX%2FkLPqxVXR7cxQVhP%2B5sSUdt9i0gEmRf9orJEmRm32Bx98%2FGtqqdqkXWodHbf21Z3VzSEO70oaRFpGDqEfZqCMsJF5ceD5d7fN9hHOqnVLZ9kXv%2FTi3m9ea9gbPRAKJ9xqgEaJ%2Bsq%2BS7BgBUH3ZqOs7aM%3D--Btw%2BacAGDthLm5p4--vU9SweVoVvqQWmatLoRvNQ%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "22df7e97-0211-4baf-8690-79938c85373f"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.092193"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html>\n    <head>\n        <title>SecondHand</title>\n        <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n        <meta name=\"csrf-param\" content=\"authenticity_token\" />\n        <meta name=\"csrf-token\" content=\"zTPFgpK0j_kFaV3sTnRH_SMv2YfvxaDmBoXJ0etp54Rmzp8IEUpXVHbJU3RpN3OEMm0zGbzWTVYsa7tqyMPV2A\" />\n        <link rel=\"stylesheet\" href=\"/assets/application-8719702cfbda8df80ef05ec97d6e3439f691b635cf6f90772d44af13d07cdc5f.css\" media=\"all\" data-turbo-track=\"reload\" />\n        <script src=\"/assets/application-129503345137b5d28c19109dabc42b97ed2206ca1c50e66a68eac5b5353990e4.js\" data-turbo-track=\"reload\" defer=\"defer\"></script>\n    </head>\n    <body>\n        <nav class=\"navbar navbar-expand-lg navbar-light bg-white shadow fixed-top\">\n            <div class=\"container\">\n                <a class=\"navbar-brand px-5 py-3\" href=\"/\"></a>\n                <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n                    <span class=\"navbar-toggler-icon\"></span>\n                </button>\n                <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n                    <form class=\"d-flex ms-0 ms-lg-4 my-4 my-lg-0\" method=\"GET\" action=\"/\" role=\"search\">\n                        <div class=\"input-group rounded-pill bg-light p-1 search\">\n                            <input name=\"q\" class=\"form-control bg-transparent border-0 form-search\" type=\"search\" placeholder=\"Cari di sini ...\" aria-label=\"Search\" value=\"\">\n                            <i class=\"bi bi-search input-group-text bg-transparent border-0\"></i>\n                        </div>\n                    </form>\n                    <div class=\"ms-auto\">\n                        <ul class=\"navbar-nav\">\n                            <li class=\"nav-item me-0 me-lg-2 fs-5\" aria-current=\"page\">\n                                <a class=\"nav-link d-flex align-items-center \" href=\"/products\">\n                                    <i class=\"bi bi-list-ul me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Produk Saya</span>\n                                </a>\n                            </li>\n                            <li class=\"nav-item me-0 me-lg-2 fs-5 d-block d-xl-none position-relative\">\n                                <a class=\"nav-link d-flex align-items-center\" href=\"/notifications\">\n                                    <i class=\"bi bi-bell me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Notifikasi</span>\n                                </a>\n                            </li>\n                            <li class=\"nav-item dropdown me-0 me-lg-2 fs-5 d-none d-xl-block position-relative\">\n                                <a class=\"nav-link dropdown-toggle position-relative\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">\n                                    <i class=\"bi bi-bell\"></i>\n                                </a>\n                                <ul class=\"dropdown-menu notification-dropdown-menu px-4\">\n                                    <li class=\"p-2\">Tidak ada notifikasi</li>\n                                </ul>\n                            </li>\n                            <li class=\"nav-item fs-5 d-block d-lg-none\">\n                                <a class=\"nav-link d-flex align-items-center\" href=\"/profiles\">\n                                    <i class=\"bi bi-person me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Profil Saya</span>\n                                </a>\n                            </li>\n                            <li class=\"nav-item fs-5 d-block d-lg-none\">\n                                <form action=\"/users/sign_out\" accept-charset=\"UTF-8\" method=\"post\">\n                                    <input type=\"hidden\" name=\"_method\" value=\"delete\" autocomplete=\"off\" />\n                                    <input type=\"hidden\" name=\"authenticity_token\" value=\"OmXdSHLhDQ8i9SjkNIjDMH9YVed1vyb2kPIUVcKbE5y0COhxE6IN7xIczQI-2OzlBo7tc0XUQjZAqLv_rp4WOA\" autocomplete=\"off\" />\n                                    <button name=\"button\" type=\"submit\" class=\"nav-link btn btn-link btn-sm text-decoration-none fs-5 logout-button\">\n                                        <i class=\"bi bi-arrow-bar-left me-3\"></i>\n                                        <span class=\"fs-6\">Keluar</span>\n                                    </button>\n                                </form>\n                            </li>\n                            <li class=\"nav-item dropdown fs-5 d-none d-lg-block\">\n                                <a class=\"nav-link dropdown-toggle d-flex align-items-center\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">\n                                    <i class=\"bi bi-person me-4 me-lg-0\"></i>\n                                    <span class=\"d-block d-lg-none fs-6\">Profil Saya</span>\n                                </a>\n                                <ul class=\"dropdown-menu\">\n                                    <li>\n                                        <a class=\"nav-user\" href=\"/profiles\">\n                                            <div class=\"d-flex align-items-center justify-content center flex-column py-2\">\n                                                <img class=\"img-avatar w-100 rounded-4 mb-2\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekE5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ccc34fc634bd9112f474f0894015133ccc7f6e54/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hSeVpYTnBlbVZmZEc5ZmJHbHRhWFJiQjJrQ2tBRnBBcEFCIiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--dad1ea9fd9c33e8a8e0e49b4c08b1d130563e04b/WhatsApp%20Image%202023-10-09%20at%2021.57.17.jpeg\" />\n                                                <div class=\"card-body text-center\">\n                                                    <div class=\"fs-5 fw-bold\">Bob</div>\n                                                    <div class=\"fs-6 text-black-50\">Jakarta</div>\n                                                </div>\n                                            </div>\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <hr class=\"dropdown-divider\">\n                                    </li>\n                                    <li>\n                                        <form action=\"/users/sign_out\" accept-charset=\"UTF-8\" method=\"post\">\n                                            <input type=\"hidden\" name=\"_method\" value=\"delete\" autocomplete=\"off\" />\n                                            <input type=\"hidden\" name=\"authenticity_token\" value=\"jxZdT6Yx1-fWeOFuykZfyGaOEjsceGpKBgIq2LQXhWQBe2h2x3LXB-aRBIjAFnAdH1iqrywTDorWWIVy2BKAwA\" autocomplete=\"off\" />\n                                            <button name=\"button\" type=\"submit\" class=\"btn btn-link text-decoration-none\">\n                                                <i class=\"bi bi-arrow-bar-left me-3\"></i>\n            Keluar\n                                            </button>\n                                        </form>\n                                    </li>\n                                </ul>\n                            </li>\n                        </ul>\n                        <!-- TODO: Move this somewhere convinient -->\n                        <script>\n  var notifications = document.querySelectorAll(\"a.notification\")\n\n  notifications.forEach((notification) => {\n    if (notification.dataset.notificationRead == \"false\") {\n      notification.addEventListener('click', async function () {\n        await fetch(`/notifications/${notification.dataset.notificationId}/read`, {\n          credentials: \"same-origin\",\n          method: \"PUT\"\n        });\n      });\n    }\n  })\n</script>\n                    </div>\n                </div>\n            </div>\n        </nav>\n        <section class=\"pt-5 mt-5\">\n            <section class=\"mt-lg-5 mb-5 w-100 d-flex gap-lg-5\">\n                <div class=\"promo left bg-success rounded-end flex-grow-1 align-self-center d-none d-lg-block\"></div>\n                <div class=\"promo center flex-grow-1 bg-warning rounded-lg-4 rounded-0\">\n                    <div class=\"row p-5\">\n                        <div class=\"col\">\n                            <h1 class=\"fw-bold mb-4\">Bulan Ramadhan\n                                <br>Banyak diskon!\n                            </h1>\n                            <h6 class=\"fs-5 fw-normal\" >Diskon Hingga</h6>\n                            <h5 class=\"display-6 text-danger fw-bold\">60%</h5>\n                        </div>\n                        <div class=\"col\">\n      </div>\n                    </div>\n                </div>\n                <div class=\"promo right bg-info rounded-start flex-grow-1 align-self-center d-none d-lg-block\"></div>\n            </section>\n            <section class=\"container\">\n                <h5 class=\"fw-bold mb-4\">Telusuri Kategori</h5>\n                <nav class=\"nav row gap-4 px-2 px-lg-0\">\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center active\" href=\"/\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n      Semua\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=1\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Hobi\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=2\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Kendaraan\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=3\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Baju\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=4\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Elektronik\n                    </a>\n                    <a class=\"btn btn-alt-primary col rounded-4 py-2 px-4 d-inline-flex align-items-center false\" href=\"/?category_id=5\">\n                        <i class=\"bi bi-search me-3 fs-4\"></i>\n        Kesehatan\n                    </a>\n                </nav>\n                <div class=\"row my-5 g-5\" id='products'>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51671\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd1k5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9cb0b6d16e426014a43c71fb3476603f822077eb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">UPS</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 2.195.625</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51670\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd1U5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--dd46f26def70acb82d1fea3f63c06f901c05fe7a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Software License</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 4.311.390</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51669\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd1E5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1c995bb1a7f9ddb374bcd320e6e8127eeffe30a5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Monitor</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 4.841.830</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51668\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd005QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f1fec1f52c85861e7f569e69c68286a9a72d3a61/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">SSD</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 592.540</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51667\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0k5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b0864b19367108ac515a039ae8455c5dee0e3471/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Mouse</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 2.431.296</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51666\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0U5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a2571ba5665b4974d67f69e9c8a6f56f234fa7db/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Scanner</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 450.961</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51665\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0E5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--73c1c777d4994399739901edcc90ca7f2b239a3b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">External Hard Drive</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 1.137.553</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51664\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzg4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--20f553f10e13caa66a73804ef3d9cc7bb6a43430/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Motherboard</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 3.570.814</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51663\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzQ4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--99a53d881d6be62b02eaf8eaa223ca15ae104ace/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">Mouse</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 447.960</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"col-12 col-md-4 col-lg-3\">\n                        <a class=\"product-card\" href=\"/products/51662\">\n                            <div class=\"card px-0 border-0 shadow h-100 pb-4 rounded-4\">\n                                <img class=\"card-img img-product-thumbnail p-3 rounded-4 overflow-hidden\" src=\"https://secondhand.binaracademy.org/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzA4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ddc85d2a3ad542a7ecd85b5effb562e842830446/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJQUFXa0NBQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--b50863606d6ba2f597650ed7335384ba20cf4712/barang-elektronik_20180823_121413.jpg\" />\n                                <div class=\"card-body text-decoration-none\">\n                                    <h5 class=\"card-title\">RAM</h5>\n                                    <p class=\"card-text text-black-50 text-small\">Hobi</p>\n                                    <h5 class=\"card-text\">Rp 4.482.773</h5>\n                                </div>\n                            </div>\n                        </a>\n                    </div>\n                    <div role=\"navigation\" aria-label=\"Pagination\" class=\"d-flex gap-4 align-items-center justify-content-center my-5\">\n                        <span class=\"previous_page disabled\" aria-disabled=\"true\">&#8592; Previous</span>\n                        <a class=\"next_page\" rel=\"next\" href=\"/?page=2\">Next &#8594;</a>\n                    </div>\n                </div>\n            </section>\n            <div class=\"sticky-bottom d-flex align-items-center justify-content-center py-4\">\n                <a class=\"btn btn-primary btn-lg rounded-4 d-inline-flex align-items-center justify-content-space-between px-5\" href=\"/products/new\">\n                    <i class=\"bi bi-plus fs-2 me-3\"></i>\n                    <span class=\"fs-6\">Jual</span>\n                </a>\n            </div>\n        </section>\n    </body>\n</html>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Update Profiles",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate a random-looking Indonesian phone number\r",
+									"function generateRandomIndonesianPhoneNumber() {\r",
+									"    const prefixOptions = [\"0811\", \"0812\", \"0813\", \"0821\", \"0822\", \"0823\", \"0851\", \"0852\", \"0853\", \"0814\", \"0815\", \"0816\", \"0855\"];\r",
+									"    const selectedPrefix = prefixOptions[Math.floor(Math.random() * prefixOptions.length)];\r",
+									"    const remainingDigits = Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');\r",
+									"    return selectedPrefix + remainingDigits;\r",
+									"}\r",
+									"const randomIndonesianPhoneNumber = generateRandomIndonesianPhoneNumber();\r",
+									"// Store the random Indonesian phone number in an environment variable\r",
+									"pm.environment.set('random_indonesian_phone_number', randomIndonesianPhoneNumber);\r",
+									"\r",
+									"// Generate a random-looking Indonesian address\r",
+									"function generateRandomIndonesianAddress() {\r",
+									"    const streets = [\"Jalan Merdeka\", \"Jalan Pahlawan\", \"Jalan Raya\", \"Jalan Cendrawasih\", \"Jalan Budi Utomo\", \"Jalan Diponegoro\"];\r",
+									"    const cities = [\"Jakarta\", \"Surabaya\", \"Bandung\", \"Yogyakarta\", \"Medan\", \"Semarang\"];\r",
+									"    const provinces = [\"Jakarta\", \"East Java\", \"West Java\", \"Yogyakarta\", \"North Sumatra\", \"Central Java\"];\r",
+									"    \r",
+									"    const randomStreet = streets[Math.floor(Math.random() * streets.length)];\r",
+									"    const randomCity = cities[Math.floor(Math.random() * cities.length)];\r",
+									"    const randomProvince = provinces[Math.floor(Math.random() * provinces.length)];\r",
+									"    \r",
+									"    return `${randomStreet}, ${randomCity}, ${randomProvince}`;\r",
+									"}\r",
+									"const randomIndonesianAddress = generateRandomIndonesianAddress();\r",
+									"// Store the random Indonesian address in an environment variable\r",
+									"pm.environment.set('random_indonesian_address', randomIndonesianAddress);\r",
+									"// Extract the city from the generated address\r",
+									"const city = randomIndonesianAddress.split(', ')[1];\r",
+									"// Store the extracted city in an environment variable\r",
+									"pm.environment.set('random_indonesian_city', city);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user[name]",
+									"value": "{{random_name}}",
+									"type": "text"
+								},
+								{
+									"key": "user[phone_number]",
+									"value": "{{random_indonesian_phone_number}}",
+									"type": "text"
+								},
+								{
+									"key": "user[address]",
+									"value": "{{random_indonesian_address}}",
+									"type": "text"
+								},
+								{
+									"key": "user[city_id]",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "user[avatar]",
+									"type": "file",
+									"src": "/C:/Users/USER/Downloads/WhatsApp Image 2023-10-09 at 21.57.17.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/profiles.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profiles.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully Update Profiles",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user[name]",
+											"value": "cipung",
+											"type": "text"
+										},
+										{
+											"key": "user[phone_number]",
+											"value": "628888811",
+											"type": "text"
+										},
+										{
+											"key": "user[address]",
+											"value": "jl aceh",
+											"type": "text"
+										},
+										{
+											"key": "user[city_id]",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/profiles.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profiles.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 19:22:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f4426c4975e00d12c283c4970f9d229\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=7B%2FTfHdPA2jKSMFY0XWsWajohUqoaGElxGa5wXn7MI8c68eozSYHxJY3G0N%2BN4YuLT4HRI8k2Sw1aVS8hsTdIAeroi41nm0LGu9HHbUR3KLLbQSxTCMDdWo%2FuxgqVb1CV0eJpI2FdFnn7yT%2BIeKblxM4RtyDpaAuG5xlYDsxCzg7EAtnViEnBEt7N2uqf4iwyF3DgbIeQh7qpAR0a24MrM2ZWJjJ6JHkFW1vvbfS2ZMgAq51aa5KDhtpaml3QHTr%2FYhJ9IwmMRJIpSvltltaXpwhCr%2BnlCtaZCVOO1rS4%2BfIUFgul4NuE4ychLW2i6MGQJVdfK7Kv%2FPCQH20Hs%2B0KEB6cf%2Bo49nSuJui0YfY87cdR3WLt98NYseT8%2Fs9JTNe2q5UcJGXr0e52OzjWGjFovklGru3ZMoftLs1U%2BZ46JKsYYIIha0tNHVH8KQ%3D--eCV73xJbNirZfLCV--f%2BugaQqG%2BuP5a%2BIpywGx8g%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "9d0c6670-f5dc-4832-9e61-d9fc1c3de6c5"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.016704"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 87594,\n        \"name\": \"cipung\",\n        \"email\": \"d3dd@gmail.com\",\n        \"phone_number\": \"628888811\",\n        \"address\": \"jl aceh\",\n        \"city\": {\n            \"id\": 3,\n            \"name\": \"Jakarta\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profiles.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profiles.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Succesfully_Get Profiles",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profiles.json",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profiles.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 Nov 2023 21:16:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"58f15d1fe02814491ac0eda2798b3434\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_binar_playground_secondhand_marketplace_session=S8AcYlhOxKjfnjE%2BQRpccVs2Mi3%2Bnq%2BjBe7ITNEmZ0l5hBO2IYEUY0QmLGGS3nMCsrffObQSP07OWCWRXcFCqsfywFphVQCHgdIVd6ssBEbM1cszo0PKlH4IzBlOakmrFWcQyLNov%2FjkxNcIQSXpPK1%2BdKWZPL8LnJ79Uo23TjVCiJU%2Fi55%2BnSjz1mUmFJtxz7fHnNo4zO0aeih3lEEaR%2F46hiDBlep85Ghe72CJt%2BDGuUiOqdPrHxwAzcRFROibf58VMMaKwDmoZEMgTEO5nuGtYp7O80q4OFVD6r36XETdqvpuM%2B49OhMg42l1AtZRcOGrqsS6qWDVj7A1iHpC2lI4DYhHDhDpLD%2Bfx8K7l%2FSbSacdpp41483%2B%2Fkcs7CG86vPeu5mTWJdfWFccVOIJ5t%2BZo4Z5eOZLuexRMthOB9cauVo8PZERvRbtH%2BA%3D--%2BnfWcvvyW1a864%2Fc--Y8xGmI5ghqSxs57r1fEyNg%3D%3D; path=/; secure; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ce54179c-40ff-4de3-8e55-d0071744d6e8"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.011663"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 87613,\n        \"name\": \"Bob Doe\",\n        \"email\": \"hgg5owlipx@example.com\",\n        \"phone_number\": \"0815953099489\",\n        \"address\": \"Jalan Pahlawan, Yogyakarta, East Java\",\n        \"city\": {\n            \"id\": 3,\n            \"name\": \"Jakarta\"\n        },\n        \"avatar\": {\n            \"filename\": \"WhatsApp Image 2023-10-09 at 21.57.17.jpeg\",\n            \"url\": \"/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBekE5QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ccc34fc634bd9112f474f0894015133ccc7f6e54/WhatsApp%20Image%202023-10-09%20at%2021.57.17.jpeg\"\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
